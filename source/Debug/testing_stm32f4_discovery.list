@@ -41,9 +41,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  18 .debug_macro  0002333e  00000000  00000000  00039f7c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_line   00017ad9  00000000  00000000  0005d2ba  2**0
+ 19 .debug_line   00017ad8  00000000  00000000  0005d2ba  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_str    000cb06b  00000000  00000000  00074d93  2**0
+ 20 .debug_str    000cb06b  00000000  00000000  00074d92  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  21 .debug_frame  00004a4c  00000000  00000000  0013fe00  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -408,11 +408,11 @@ int main(void)
  8000510:	f000 f902 	bl	8000718 <MX_SPI1_Init>
   MX_USB_HOST_Init();
  8000514:	f006 ff9e 	bl	8007454 <MX_USB_HOST_Init>
-    } else {
-      turnOffLedOrange();
-    }
-    */
 
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
     if ( readBlueButton() == 1 ) {
  8000518:	1d3b      	adds	r3, r7, #4
  800051a:	469c      	mov	ip, r3
