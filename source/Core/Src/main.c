@@ -102,11 +102,72 @@ int main(void)
   MX_USB_HOST_Init();
   /* USER CODE BEGIN 2 */
 
+  
+  
+  
+  /* PA0  on the STM32 | B1 blue button on the development board */
+  int readBlueButton() {
+    if ( HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == 1 ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+
+
+  /* PD12 on the STM32 | LD4 green LED on the development board */
+  void turnOnLedGreen() {
+    HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
+  }
+  void turnOffLedGreen() {
+    HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
+  }
+
+  /* PD13 on the STM32 | LD3 orange LED on the development board */
+  void turnOnLedOrange() {
+    HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
+  }
+  void turnOffLedOrange() {
+    HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET);
+  }
+
+  /* PD14 on the STM32 | LD5 red LED on the development board */
+  void turnOnLedRed() {
+    HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_SET);
+  }
+  void turnOffLedRed() {
+    HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_RESET);
+  }
+
+  /* PD15 on the STM32 | LD6 blue LED on the development board */
+  void turnOnLedBlue() {
+    HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_SET);
+  }
+  void turnOffLedBlue() {
+    HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_RESET);
+  }
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
+  {
+    if ( readBlueButton() == 1 ) {
+      turnOnLedOrange();
+    } else {
+      turnOffLedOrange();
+    }
+
+    /* HAL_GPIO_TogglePin (GPIOD, GPIO_PIN_13); */
+    /* HAL_Delay (100);   */
+    
+    
+    /* USER CODE END WHILE */
+    MX_USB_HOST_Process();
+    /* USER CODE BEGIN 3 */
+  }
   
   /* USER CODE END 3 */
 }
